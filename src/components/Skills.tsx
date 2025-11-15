@@ -114,7 +114,7 @@ const Skills = () => {
                         gridTemplateColumns: `repeat(${root.subcategories.length}, minmax(0, 1fr))`,
                       }}
                     >
-                      {root.subcategories.map((subcategory, subIndex) => (
+                      {root.subcategories.map((_, subIndex) => (
                         <div key={subIndex} className="relative">
                           {/* Invisible box to measure center position */}
                           <div className="w-full h-1" id={`connector-${rootIndex}-${subIndex}`}></div>
