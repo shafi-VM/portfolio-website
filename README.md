@@ -114,6 +114,6 @@ MIT License - feel free to use this as a template for your own portfolio!
 ## Author
 
 **Shafi Ahmed**
-- GitHub: [@ita004](https://github.com/ita004)
+- GitHub: [@ita004](https://github.com/ita004)/[@shafi-VM](https://github.com/shafi-VM)
 - LinkedIn: [Shafi Ahmed](https://www.linkedin.com/in/shafi-ah01/)
 - Email: shfahmd001@gmail.com

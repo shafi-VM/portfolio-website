@@ -67,7 +67,7 @@ const Skills = () => {
               <span className="text-anthropic-coral font-mono text-xl mr-2">03.</span>
               Skills & Technologies
             </h2>
-            <p className="text-slate-dark/60 font-mono text-sm mt-4">
+            <p className="text-slate-dark/60 font-mono text-sm mt-4 hidden lg:block">
               Hover over a category to see electricity flow
             </p>
           </div>
@@ -90,9 +90,9 @@ const Skills = () => {
                   className="relative"
                 >
                   {/* Main Category */}
-                  <div className="flex justify-center mb-8">
+                  <div className="flex justify-center mb-8 lg:mb-8">
                     <motion.div
-                      className={`relative px-8 py-3 rounded-lg border-2 font-mono text-base font-semibold cursor-pointer transition-all duration-300 ${
+                      className={`relative px-6 sm:px-8 py-3 rounded-lg border-2 font-mono text-sm sm:text-base font-semibold cursor-pointer transition-all duration-300 ${
                         isHovered
                           ? 'bg-anthropic-coral border-anthropic-coral text-white'
                           : 'bg-white/60 backdrop-blur-sm border-slate-dark/20 text-slate-dark'
@@ -105,8 +105,8 @@ const Skills = () => {
                     </motion.div>
                   </div>
 
-                  {/* Connector section */}
-                  <div className="relative" style={{ height: '160px' }}>
+                  {/* Connector section - hidden on mobile, visible on desktop */}
+                  <div className="relative hidden lg:block" style={{ height: '160px' }}>
                     {/* Subcategories Grid - positioned absolutely to measure positions */}
                     <div
                       className="grid gap-6 absolute top-0 left-0 right-0"
@@ -235,9 +235,10 @@ const Skills = () => {
 
                   {/* Subcategories Grid - actual content */}
                   <div
-                    className="grid gap-6 relative"
+                    className={`grid gap-4 sm:gap-6 relative grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 ${
+                      root.subcategories.length === 5 ? 'xl:grid-cols-5' : 'xl:grid-cols-3'
+                    }`}
                     style={{
-                      gridTemplateColumns: `repeat(${root.subcategories.length}, minmax(0, 1fr))`,
                       zIndex: 10,
                     }}
                   >
@@ -254,7 +255,7 @@ const Skills = () => {
                       >
                         {/* Subcategory Box */}
                         <div
-                          className={`px-4 py-3 rounded-lg border transition-all duration-300 ${
+                          className={`px-3 sm:px-4 py-3 rounded-lg border transition-all duration-300 ${
                             isHovered
                               ? 'bg-anthropic-coral/5 border-anthropic-coral/30'
                               : 'bg-white/60 backdrop-blur-sm border-slate-dark/10'
@@ -262,7 +263,7 @@ const Skills = () => {
                         >
                           {/* Subcategory Name */}
                           <div
-                            className={`text-center font-mono text-sm font-semibold mb-4 pb-3 border-b transition-colors duration-300 ${
+                            className={`text-center font-mono text-xs sm:text-sm font-semibold mb-3 sm:mb-4 pb-2 sm:pb-3 border-b transition-colors duration-300 ${
                               isHovered
                                 ? 'text-anthropic-coral border-anthropic-coral/20'
                                 : 'text-slate-dark border-slate-dark/10'
@@ -272,7 +273,7 @@ const Skills = () => {
                           </div>
 
                           {/* Skills */}
-                          <div className="space-y-2">
+                          <div className="space-y-1.5 sm:space-y-2">
                             {subcategory.skills.map((skill, skillIndex) => {
                               const isSkillHovered = hoveredSkill === skill;
 
@@ -294,7 +295,7 @@ const Skills = () => {
                                   whileHover={{ x: 5, scale: 1.02 }}
                                   onMouseEnter={() => setHoveredSkill(skill)}
                                   onMouseLeave={() => setHoveredSkill(null)}
-                                  className={`px-3 py-2 rounded text-xs font-mono text-center transition-all duration-200 cursor-pointer ${
+                                  className={`px-2 sm:px-3 py-1.5 sm:py-2 rounded text-[10px] sm:text-xs font-mono text-center transition-all duration-200 cursor-pointer ${
                                     isSkillHovered
                                       ? 'bg-anthropic-coral text-white shadow-md'
                                       : isHovered
