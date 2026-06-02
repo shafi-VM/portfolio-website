@@ -8,7 +8,7 @@ export const portfolioData: PortfolioData = {
     phone: "+91-8707074725",
     location: "Hyderabad, India",
     linkedin: "https://www.linkedin.com/in/shafi-ah01/",
-    github: "https://github.com/ita004",
+    github: "https://github.com/shafi-VM",
     bio: "Full-stack engineer who believes great systems are built with care — clean architecture, thoughtful design, and an obsession for learning. I love building tools and platforms that make technology feel simple and human",
   },
 
