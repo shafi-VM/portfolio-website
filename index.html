@@ -4,8 +4,59 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Shafi Ahmed - Full-Stack Developer specializing in AI-driven systems, RAG pipelines, and modern web development" />
-    <title>Shafi Ahmed - Portfolio</title>
+    <meta name="theme-color" content="#f5f5f0" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#101012" media="(prefers-color-scheme: dark)" />
+
+    <!-- Primary meta -->
+    <title>Shafi Ahmed — Backend & AI Engineer</title>
+    <meta name="author" content="Shafi Ahmed" />
+    <meta
+      name="description"
+      content="Shafi Ahmed — Backend & AI Engineer building production AI-powered platforms in Go and Python: multi-tenant RAG systems, distributed services, and enterprise authorization. Open-source contributor to Medusa."
+    />
+    <meta
+      name="keywords"
+      content="Shafi Ahmed, Backend Engineer, AI Engineer, Go, Python, FastAPI, RAG, pgvector, PostgreSQL, distributed systems, Medusa, open source"
+    />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Shafi Ahmed — Backend & AI Engineer" />
+    <meta
+      property="og:description"
+      content="Building production AI-powered platforms in Go and Python — multi-tenant RAG systems, distributed services, and open-source contributions to Medusa."
+    />
+    <meta property="og:url" content="https://shafi-vm.github.io/portfolio-website/" />
+    <meta property="og:site_name" content="Shafi Ahmed" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Shafi Ahmed — Backend & AI Engineer" />
+    <meta
+      name="twitter:description"
+      content="Building production AI-powered platforms in Go and Python. Open-source contributor to Medusa."
+    />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- No-flash theme: apply saved/system theme before first paint -->
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem('theme');
+          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (stored === 'dark' || (!stored && prefersDark)) {
+            document.documentElement.classList.add('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

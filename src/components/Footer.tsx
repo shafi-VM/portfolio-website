@@ -9,21 +9,15 @@ const Footer = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setShowScrollTop(window.scrollY > 500);
-    };
-
-    window.addEventListener('scroll', handleScroll);
+    const handleScroll = () => setShowScrollTop(window.scrollY > 500);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
   return (
     <>
-      {/* Back to Top Button */}
       <AnimatePresence>
         {showScrollTop && (
           <motion.button
@@ -41,46 +35,27 @@ const Footer = () => {
         )}
       </AnimatePresence>
 
-      {/* Footer */}
-      <footer id="footer" className="py-8 px-4 sm:px-6 lg:px-8 border-t border-slate-dark/10">
+      <footer id="footer" className="py-10 px-4 sm:px-6 lg:px-8 border-t border-slate-dark/10">
         <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col items-center gap-6">
-            {/* Social Links */}
-            <div className="flex gap-6">
-              <a
-                href={personal.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-slate-dark/60 hover:text-anthropic-coral transition-colors duration-300"
-                aria-label="GitHub"
-              >
+          <div className="flex flex-col items-center gap-5">
+            <div className="flex gap-7">
+              <a href={personal.github} target="_blank" rel="noopener noreferrer" className="text-slate-dark/60 hover:text-anthropic-coral transition-colors duration-300" aria-label="GitHub">
                 <Github className="w-5 h-5" />
               </a>
-              <a
-                href={personal.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-slate-dark/60 hover:text-anthropic-coral transition-colors duration-300"
-                aria-label="LinkedIn"
-              >
+              <a href={personal.linkedin} target="_blank" rel="noopener noreferrer" className="text-slate-dark/60 hover:text-anthropic-coral transition-colors duration-300" aria-label="LinkedIn">
                 <Linkedin className="w-5 h-5" />
               </a>
-              <a
-                href={`mailto:${personal.email}`}
-                className="text-slate-dark/60 hover:text-anthropic-coral transition-colors duration-300"
-                aria-label="Email"
-              >
+              <a href={`mailto:${personal.email}`} className="text-slate-dark/60 hover:text-anthropic-coral transition-colors duration-300" aria-label="Email">
                 <Mail className="w-5 h-5" />
               </a>
             </div>
 
-            {/* Copyright */}
             <div className="text-center">
               <p className="text-slate-dark/60 text-sm font-mono">
-                Built by {personal.name}
+                Designed &amp; built by {personal.name}
               </p>
-              <p className="text-slate-dark/40 text-xs mt-1">
-                © {currentYear} All rights reserved.
+              <p className="text-slate-dark/40 text-xs mt-1 font-mono">
+                React · TypeScript · Tailwind · Framer Motion · © {currentYear}
               </p>
             </div>
           </div>

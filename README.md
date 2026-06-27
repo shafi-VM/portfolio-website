@@ -1,119 +1,87 @@
-# Shafi Ahmed - Portfolio Website
+# Shafi Ahmed — Portfolio
 
-A modern, minimal portfolio website built with React, TypeScript, and Tailwind CSS, featuring smooth animations and glassmorphism effects.
+Personal portfolio of **Shafi Ahmed**, a Backend & AI Engineer. A single-page site built with
+React, TypeScript, Tailwind CSS, and Framer Motion — a warm coral/cream design system with a
+polished light/dark mode.
 
 ## Features
 
-- 🎨 **Clean, Minimal Design** - Inspired by Anthropic's design system with sketch paper background
-- ⚡ **Fast & Performant** - Built with Vite for lightning-fast development
-- 🎭 **Smooth Animations** - Fluid interactions with Framer Motion including:
-  - Waterfall loading animations
-  - Floating text effects on hover
-  - Smooth section transitions
-  - Custom cursor with blur effects
-- 📱 **Fully Responsive** - Works seamlessly on all devices
-- 🎯 **Type-Safe** - Written in TypeScript
-- 💎 **Glassmorphism** - Modern frosted glass effects on cards and navigation
-- 🎯 **Smart Navigation** - Active section highlighting based on scroll position
-- 🌊 **Interactive Effects** - Floating name animation, project hover effects, and skill tree visualization
+- 🎨 **Warm, minimal design** — Anthropic-inspired coral on a paper-texture background
+- 🌗 **Light / dark mode** — CSS-variable theming with a no-flash toggle (respects system preference)
+- ⚡ **Fast** — Vite build, ~113 kB gzipped JS
+- 🎭 **Smooth motion** — Framer Motion entrance + scroll animations (respects `prefers-reduced-motion`)
+- 📱 **Responsive** — mobile-first, works across breakpoints
+- 🖱️ **Custom cursor** — only on precise-pointer (desktop) devices; touch keeps native behaviour
+- 🔍 **SEO-ready** — Open Graph / Twitter meta, semantic markup, self-hosted résumé PDF
+
+## Sections
+
+- **Hero** — role, tagline, availability badge, and a “by the numbers” stats strip
+- **About** — bio with an animated tech-tree visualization
+- **Experience** — current role (QORRO) with quantified highlights, plus **Education**
+- **Skills** — technologies grouped by category
+- **Projects** — flagship professional work + selected personal/systems projects
+- **Open Source** — merged pull requests to [`medusajs/medusa`](https://github.com/medusajs/medusa)
+- **Contact** — email, phone, and social links
 
 ## Tech Stack
 
-- **React** - UI library
-- **TypeScript** - Type safety
-- **Vite** - Build tool
-- **Tailwind CSS** - Styling
-- **Framer Motion** - Animations
-- **Lucide React** - Icons
+React 19 · TypeScript · Vite · Tailwind CSS · Framer Motion · Lucide Icons
 
 ## Getting Started
 
-### Prerequisites
-
-- Node.js 20.10.0 or higher
-- npm or yarn
-
-### Installation
-
 ```bash
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-
-# Build for production
-npm run build
-
-# Preview production build
-npm run preview
+npm install      # install dependencies
+npm run dev      # start dev server
+npm run build    # type-check + production build
+npm run preview  # preview the production build
+npm run lint     # run ESLint
 ```
+
+Requires Node.js 20.10+ (developed on Node 22).
 
 ## Project Structure
 
 ```
+public/
+├── favicon.svg
+└── Shafi_Ahmed_Resume.pdf      # self-hosted résumé (linked from the navbar/hero)
 src/
-├── components/       # React components
-│   ├── Navbar.tsx
-│   ├── Hero.tsx
-│   ├── About.tsx
-│   ├── Experience.tsx
-│   ├── Skills.tsx
-│   ├── Projects.tsx
-│   ├── Contact.tsx
-│   └── Footer.tsx
-├── data/            # Portfolio data
-│   └── portfolio.ts
-├── App.tsx          # Main app component
-└── index.css        # Global styles
+├── components/                 # Navbar, Hero, About, Experience, Skills, Projects,
+│                               # OpenSource, Contact, Footer, ThemeToggle, CustomCursor, TechTree
+├── data/portfolio.ts           # all site content (single source of truth)
+├── types/portfolio.ts          # content types
+├── App.tsx
+└── index.css                   # theme variables + global styles
 ```
 
 ## Customization
 
-To customize the portfolio with your own information:
-
-1. Edit `src/data/portfolio.ts` with your personal information, experience, skills, and projects
-2. Update the color scheme in `tailwind.config.js` if desired
-3. Replace social media links and contact information
-
-## Design Inspiration
-
-This portfolio is inspired by:
-- **Anthropic** - Clean, minimal aesthetic with coral accents
-- **Modern Portfolio Practices** - Single-page design with smooth scrolling
-
-## Key Sections
-
-- **Hero** - Animated introduction with floating name effect
-- **About** - Personal background with tech tree visualization
-- **Experience** - Work history with waterfall animation on load
-- **Skills** - Interactive hierarchical tree structure with hover effects
-- **Projects** - Featured projects with zig-zag layout and floating hover effects
-- **Contact** - Get in touch section with social links
+All content lives in **`src/data/portfolio.ts`** — personal info, experience, education, skills,
+projects, and open-source contributions. Theme colors are CSS variables in `src/index.css`
+(`:root` for light, `.dark` for dark) and mapped to Tailwind tokens in `tailwind.config.js`.
 
 ## Color Palette
 
-- **Primary Accent**: `#d97757` (Anthropic Coral)
-- **Text Primary**: `#2a2a2a` (Slate Dark)
-- **Background**: `#f5f5f0` (Sketch Paper)
-- **Glass Elements**: Semi-transparent white with backdrop blur
+| Token   | Light                | Dark                 |
+| ------- | -------------------- | -------------------- |
+| Accent  | `#d97757` coral      | `#e99170` coral      |
+| Text    | `#2a2a2a`            | `#eae9e4`            |
+| Surface | `#ffffff`            | `#1c1c20`            |
+| Bg      | `#f5f5f0` paper      | `#101012` near-black |
 
 ## Deployment
 
-This project is optimized for deployment on platforms like:
-- **Vercel** (recommended)
-- **Netlify**
-- **GitHub Pages**
-
-Simply connect your repository and the platform will auto-detect the Vite configuration.
-
-## License
-
-MIT License - feel free to use this as a template for your own portfolio!
+Optimized for **Vercel** / **Netlify** (root-path deploys). The résumé link is root-relative
+(`/Shafi_Ahmed_Resume.pdf`); for a GitHub Pages *project* path, set Vite's `base` accordingly.
 
 ## Author
 
-**Shafi Ahmed**
-- GitHub: [@ita004](https://github.com/ita004)/[@shafi-VM](https://github.com/shafi-VM)
-- LinkedIn: [Shafi Ahmed](https://www.linkedin.com/in/shafi-ah01/)
+**Shafi Ahmed** — Backend & AI Engineer
+- GitHub: [@shafi-VM](https://github.com/shafi-VM) · earlier work: [@ita004](https://github.com/ita004)
+- LinkedIn: [shafi-ah01](https://www.linkedin.com/in/shafi-ah01/)
 - Email: shfahmd001@gmail.com
+
+## License
+
+MIT
