@@ -8,45 +8,54 @@
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
+    /* ── Light theme (default) ─────────────────────────── */
+    --bg: 245 245 240;          /* warm cream paper      */
+    --surface: 255 255 255;     /* cards / glass         */
+    --surface-2: 233 230 222;   /* alternating sections  */
+    --ink: 42 42 42;            /* primary text          */
+    --coral: 217 119 87;        /* #d97757 accent        */
+    --coral-light: 232 155 127; /* #e89b7f               */
+    --dot: 42 42 42;            /* paper texture color   */
+    --dot-alpha: 0.04;
+
+    color-scheme: light;
   }
 
-  * {
-    cursor: none !important;
+  /* `:root.dark` (specificity 0,2,0) always beats `:root` (0,1,0), so the dark
+     overrides win regardless of source/cascade order — immune to HMR reordering. */
+  :root.dark {
+    /* ── Dark theme ────────────────────────────────────── */
+    --bg: 16 16 18;             /* near-black            */
+    --surface: 28 28 32;        /* cards / glass         */
+    --surface-2: 24 24 28;      /* alternating sections  */
+    --ink: 234 233 228;         /* warm off-white text   */
+    --coral: 233 145 112;       /* brighter coral        */
+    --coral-light: 240 170 145;
+    --dot: 234 233 228;
+    --dot-alpha: 0.05;
+
+    color-scheme: dark;
   }
 
   body {
     @apply text-slate-dark font-sans;
     margin: 0;
     min-height: 100vh;
-    background-color: #f5f5f0;
+    background-color: rgb(var(--bg));
     background-image:
-      /* Paper texture noise */
-      repeating-linear-gradient(
-        90deg,
-        transparent,
-        transparent 1px,
-        rgba(42, 42, 42, 0.01) 1px,
-        rgba(42, 42, 42, 0.01) 2px
-      ),
-      repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 1px,
-        rgba(42, 42, 42, 0.01) 1px,
-        rgba(42, 42, 42, 0.01) 2px
-      ),
       /* Dot grid pattern */
-      radial-gradient(circle at 1px 1px, rgba(42, 42, 42, 0.04) 1px, transparent 0),
-      /* Subtle grain effect */
+      radial-gradient(circle at 1px 1px, rgb(var(--dot) / var(--dot-alpha)) 1px, transparent 0),
+      /* Subtle diagonal grain */
       repeating-linear-gradient(
         45deg,
-        rgba(42, 42, 42, 0.01) 0px,
-        rgba(42, 42, 42, 0.01) 1px,
+        rgb(var(--dot) / calc(var(--dot-alpha) * 0.25)) 0px,
+        rgb(var(--dot) / calc(var(--dot-alpha) * 0.25)) 1px,
         transparent 1px,
-        transparent 2px
+        transparent 4px
       );
-    background-size: 2px 2px, 2px 2px, 30px 30px, 4px 4px;
-    background-position: 0 0, 0 0, 0 0, 0 0;
+    background-size: 28px 28px, 4px 4px;
+    transition: background-color 0.4s ease;
   }
 
   html {
@@ -54,12 +63,49 @@
   }
 
   ::selection {
-    @apply bg-anthropic-coral/20;
+    @apply bg-anthropic-coral/25;
+  }
+
+  /* Themed scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: rgb(var(--bg));
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgb(var(--ink) / 0.18);
+    border-radius: 999px;
+    border: 2px solid rgb(var(--bg));
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(var(--coral) / 0.6);
+  }
+
+  /* Custom cursor only on devices with a precise pointer (desktop) */
+  @media (hover: hover) and (pointer: fine) {
+    * {
+      cursor: none !important;
+    }
   }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+  .text-gradient {
+    @apply bg-gradient-to-r from-anthropic-coral to-anthropic-coral-light bg-clip-text text-transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
