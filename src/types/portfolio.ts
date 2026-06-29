@@ -35,8 +35,9 @@ export interface Education {
   location: string;
 }
 
-export interface SkillCategory {
-  category: string;
+export interface StackLayer {
+  layer: string;
+  note: string;
   items: string[];
 }
 
@@ -68,9 +69,11 @@ export interface Personal {
 
 export interface PortfolioData {
   personal: Personal;
+  now: string[];
   experience: Experience[];
   education: Education[];
-  skills: SkillCategory[];
+  stack: StackLayer[];
+  languages: string[];
   projects: Project[];
   openSource: OpenSourceContribution[];
 }

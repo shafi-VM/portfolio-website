@@ -12,12 +12,18 @@ export const portfolioData: PortfolioData = {
     github: 'https://github.com/shafi-VM',
     resumeUrl: '/Shafi_Ahmed_Resume.pdf',
     bio: [
-      "I'm a backend engineer with ~2 years of experience building production AI-powered banking platforms in Go and Python. The work I care about lives close to the data and the architecture — multi-tenancy, retrieval, authorization, and the unglamorous correctness that keeps a system trustworthy.",
-      "At VaidhyaMegha I engineered the core backend for QORRO: 260+ REST endpoints across 67 service modules, a production RAG system over regulatory documents, and a recommendation pipeline wired to three ML scoring models. Alongside it, I built reusable Go microservices that two engineering teams now depend on.",
-      "Outside work I contribute to open source — three of my fixes are merged into Medusa, a 34k★ commerce platform — and build systems projects for the fun of understanding things end to end: LLM observability pipelines, server-authoritative game backends, geospatial tooling.",
-      "What I value most is sincerity in the work: clean architecture, owning the details, and leaving every system a little clearer, faster, and more reliable than I found it.",
+      "I'm a backend engineer who likes the unglamorous parts — multi-tenancy, retrieval, authorization, and the correctness that keeps a system trustworthy when no one's watching.",
+      "For the last ~2 years at VaidhyaMegha I've engineered the core of QORRO, a multi-tenant AI banking platform: 260+ endpoints, a production RAG system over regulatory documents, and reusable Go services that two teams now build on.",
+      "Outside work I contribute upstream (three fixes merged into Medusa) and build systems projects to understand things end to end — LLM observability, server-authoritative game backends, geospatial tooling. I care most about leaving every system a little clearer than I found it.",
     ],
   },
+
+  now: [
+    'Engineering the QORRO backend at VaidhyaMegha',
+    'Contributing fixes upstream to medusajs/medusa',
+    'Going deeper on distributed systems & databases',
+    'Open to backend / AI engineering roles',
+  ],
 
   experience: [
     {
@@ -51,32 +57,41 @@ export const portfolioData: PortfolioData = {
     },
   ],
 
-  skills: [
+  // Skills, organized the way a request actually flows through a system.
+  stack: [
     {
-      category: 'Languages',
-      items: ['Go', 'Python', 'TypeScript', 'Java', 'SQL', 'C++'],
+      layer: 'API & Contracts',
+      note: 'the surface area — typed, documented, versioned',
+      items: ['FastAPI', 'Gin', 'REST APIs', 'Pydantic', 'OpenAPI / Swagger'],
     },
     {
-      category: 'Backend & Architecture',
-      items: ['Distributed Systems', 'Microservices', 'Multi-Tenancy', 'REST APIs', 'Event-Driven', 'RBAC', 'JWT', 'SSO'],
+      layer: 'Auth & Access',
+      note: 'who can touch what, enforced top to bottom',
+      items: ['RBAC', 'JWT', 'SSO (Azure AD / GCP)', 'Step-up Auth', 'PostgreSQL RLS'],
     },
     {
-      category: 'AI & Search',
-      items: ['RAG', 'LLM Integration', 'OpenAI APIs', 'Embeddings', 'pgvector', 'Hybrid & Semantic Search', 'LangChain'],
+      layer: 'Services & Logic',
+      note: 'where the work happens',
+      items: ['Go', 'Python', 'Microservices', 'Service Weaver', 'Event-Driven', 'Multi-Tenancy'],
     },
     {
-      category: 'Data & Storage',
-      items: ['PostgreSQL', 'PostgreSQL RLS', 'Redis', 'asyncpg', 'SQLAlchemy', 'Alembic', 'MongoDB', 'Supabase'],
+      layer: 'Data & Storage',
+      note: 'source of truth, plus the fast paths',
+      items: ['PostgreSQL', 'pgvector', 'Redis', 'SQLAlchemy', 'Alembic', 'asyncpg'],
     },
     {
-      category: 'Frameworks & Tools',
-      items: ['FastAPI', 'Gin', 'Service Weaver', 'Spring Boot', 'Pydantic', 'Docker', 'Kubernetes', 'GitHub Actions'],
+      layer: 'AI & Retrieval',
+      note: 'grounded answers over real documents',
+      items: ['RAG', 'OpenAI APIs', 'Embeddings', 'Hybrid & Semantic Search', 'LangChain'],
     },
     {
-      category: 'Cloud & DevOps',
-      items: ['GCP (Cloud Run, Cloud SQL, GCS)', 'AWS (S3)', 'Azure AD', 'CI/CD', 'Git'],
+      layer: 'Delivery & Infra',
+      note: 'shipped, observable, repeatable',
+      items: ['Docker', 'Kubernetes', 'GCP (Cloud Run · Cloud SQL · GCS)', 'AWS (S3)', 'GitHub Actions', 'CI/CD'],
     },
   ],
+
+  languages: ['Go', 'Python', 'TypeScript', 'Java', 'SQL', 'C++'],
 
   projects: [
     {

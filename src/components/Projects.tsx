@@ -110,7 +110,7 @@ const Projects = () => {
         >
           {/* Section Title */}
           <div className="mb-14">
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-dark mb-4 flex items-center gap-3">
+            <h2 className="font-display text-3xl sm:text-4xl font-bold uppercase tracking-tight text-slate-dark mb-4 flex items-center gap-3">
               <span className="text-anthropic-coral font-mono text-xl">04.</span>
               Featured Projects
               <span className="hidden sm:block h-px flex-1 bg-slate-dark/10 ml-4" />

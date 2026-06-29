@@ -12,6 +12,7 @@ import CustomCursor from './components/CustomCursor';
 function App() {
   return (
     <div className="min-h-screen">
+      <div className="grain" aria-hidden="true" />
       <CustomCursor />
       <Navbar />
       <main>

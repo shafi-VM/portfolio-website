@@ -20,7 +20,7 @@ const Contact = () => {
           {/* Section Title */}
           <div className="mb-12">
             <p className="text-anthropic-coral font-mono text-sm mb-4">06. What&apos;s Next?</p>
-            <h2 className="text-4xl sm:text-5xl font-bold text-slate-dark mb-6">Get In Touch</h2>
+            <h2 className="font-display text-4xl sm:text-6xl font-extrabold uppercase tracking-tight text-slate-dark mb-6">Get In Touch</h2>
             <p className="text-lg text-slate-dark/60 max-w-xl mx-auto leading-relaxed text-balance">
               I&apos;m always open to exploring new roles, projects, or anything worth building together. If something
               here sparked your curiosity, my inbox is open — I&apos;d love to hear from you.
