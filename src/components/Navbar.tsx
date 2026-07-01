@@ -97,7 +97,7 @@ const Navbar = () => {
                     href={link.href}
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0, scale: isActive ? 1.05 : 1 }}
-                    transition={{ duration: 0.5, delay: 0.08 * (index + 1) }}
+                    transition={{ duration: 0.4, delay: 0.05 * (index + 1) }}
                     className={`relative font-mono text-sm transition-colors duration-300 ${
                       isActive ? 'text-anthropic-coral' : 'text-slate-dark/70 hover:text-anthropic-coral'
                     }`}
@@ -118,9 +118,9 @@ const Navbar = () => {
                 href={resumeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.7 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.35, delay: 0.15 }}
                 className="flex items-center gap-2 px-4 py-2 border border-anthropic-coral text-anthropic-coral hover:bg-anthropic-coral hover:text-white transition-all duration-300 font-mono text-sm rounded"
               >
                 <FileText className="w-4 h-4" />
