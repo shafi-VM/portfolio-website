@@ -1,18 +1,38 @@
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { Github, Linkedin, Mail, MapPin, ArrowDown, FileText } from 'lucide-react';
 import { portfolioData } from '../data/portfolio';
 
 const lineUp = {
-  hidden: { opacity: 0, y: 28 },
+  hidden: { opacity: 0, y: 24 },
   show: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, delay: 0.1 + i * 0.08, ease: [0.4, 0, 0.2, 1] as const },
+    transition: { duration: 0.6, delay: 0.06 + i * 0.06, ease: [0.4, 0, 0.2, 1] as const },
   }),
 };
 
+// Headline words drop in from above and settle with a soft spring.
+// Two line-containers so each line staggers its own words, line 2 after line 1.
+const lineA = { hidden: {}, show: { transition: { delayChildren: 0.2, staggerChildren: 0.08 } } };
+const lineB = { hidden: {}, show: { transition: { delayChildren: 0.42, staggerChildren: 0.08 } } };
+
 const Hero = () => {
   const { personal } = portfolioData;
+  const reduce = useReducedMotion();
+
+  const word = reduce
+    ? { hidden: { opacity: 0 }, show: { opacity: 1, transition: { duration: 0.4 } } }
+    : {
+        hidden: { opacity: 0, y: '-90%' },
+        show: {
+          opacity: 1,
+          y: '0%',
+          transition: {
+            y: { type: 'spring' as const, stiffness: 140, damping: 18, mass: 1 },
+            opacity: { duration: 0.55, ease: [0.4, 0, 0.2, 1] as const },
+          },
+        },
+      };
 
   return (
     <section className="relative min-h-screen flex items-center px-4 sm:px-6 lg:px-8 py-28 overflow-hidden">
@@ -41,14 +61,16 @@ const Hero = () => {
           Hi, I&apos;m <span className="text-anthropic-coral font-medium">{personal.name}</span> —
         </motion.p>
 
-        {/* Giant editorial role */}
+        {/* Giant editorial role — words fall in from above */}
         <h1 className="font-display font-extrabold uppercase tracking-[-0.03em] leading-[0.86] text-slate-dark text-[clamp(2.75rem,10.5vw,9rem)]">
           <span className="sr-only">{personal.name} — Backend and AI Engineer. </span>
-          <motion.span custom={2} variants={lineUp} initial="hidden" animate="show" className="block" aria-hidden="true">
-            Backend &amp; <span className="text-anthropic-coral">AI</span>
+          <motion.span variants={lineA} initial="hidden" animate="show" className="block" aria-hidden="true">
+            <motion.span variants={word} className="inline-block">Backend</motion.span>{' '}
+            <motion.span variants={word} className="inline-block">&amp;</motion.span>{' '}
+            <motion.span variants={word} className="inline-block text-anthropic-coral">AI</motion.span>
           </motion.span>
-          <motion.span custom={3} variants={lineUp} initial="hidden" animate="show" className="block" aria-hidden="true">
-            Engineer
+          <motion.span variants={lineB} initial="hidden" animate="show" className="block" aria-hidden="true">
+            <motion.span variants={word} className="inline-block">Engineer</motion.span>
           </motion.span>
         </h1>
 
